@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Mime;
 using MovieSeriesManagement.Models;
 using MovieSeriesManagement.Services;
+using ContentTypeEnum = MovieSeriesManagement.Models.ContentType;
 
 namespace MovieSeriesManagement.Controllers
 {
@@ -36,7 +36,7 @@ namespace MovieSeriesManagement.Controllers
             return _dataService.GetContentById(id);
         }
 
-        public List<Content> SearchContent(string searchTerm, List<string> genres = null, string platform = null, ContentType? type = null)
+        public List<Content> SearchContent(string searchTerm, List<string> genres = null, string platform = null, ContentTypeEnum? type = null)
         {
             var allContent = _dataService.GetAllContent();
 
@@ -89,7 +89,7 @@ namespace MovieSeriesManagement.Controllers
             var allSeries = _dataService.GetAllSeries();
 
             // Generate ID
-            if (content.Type == ContentType.Movie)
+            if (content.Type == ContentTypeEnum.Movie)
             {
                 if (allMovies.Count > 0)
                     content.Id = allMovies.Max(m => m.Id) + 1;
@@ -121,7 +121,7 @@ namespace MovieSeriesManagement.Controllers
             var content = _dataService.GetContentById(id);
             if (content == null) return;
 
-            if (content.Type == ContentType.Movie)
+            if (content.Type == ContentTypeEnum.Movie)
             {
                 var movies = _dataService.GetAllMovies();
                 movies.RemoveAll(m => m.Id == id);
