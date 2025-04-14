@@ -16,9 +16,7 @@ namespace MovieSeriesManagement.Services
 
         public JsonDataService()
         {
-            // Change this to use the project directory instead of the application base directory
-            string projectDirectory = Directory.GetCurrentDirectory();
-            _dataFolderPath = Path.Combine(projectDirectory, "Data");
+            _dataFolderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
             _usersFilePath = Path.Combine(_dataFolderPath, "users.json");
             _moviesFilePath = Path.Combine(_dataFolderPath, "movies.json");
             _seriesFilePath = Path.Combine(_dataFolderPath, "series.json");
