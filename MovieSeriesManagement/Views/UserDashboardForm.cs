@@ -560,24 +560,20 @@ namespace MovieSeriesManagement.Views
                 }
             }
 
-            var favoriteGenres = genreCounts.OrderByDescending(kv => kv.Value).  = 1;
-        }
-            }
-            
             var favoriteGenres = genreCounts.OrderByDescending(kv => kv.Value).Take(3).ToList();
 
-        Label lblFavoriteGenres = new Label
-        {
-            Text = "Favorite Genres: " + (favoriteGenres.Count > 0
-                ? string.Join(", ", favoriteGenres.Select(g => g.Key))
-                : "None yet"),
-            AutoSize = true,
-            Location = new Point(20, 180),
-            Font = new Font("Segoe UI", 12F)
-        };
+            Label lblFavoriteGenres = new Label
+            {
+                Text = "Favorite Genres: " + (favoriteGenres.Count > 0
+                    ? string.Join(", ", favoriteGenres.Select(g => g.Key))
+                    : "None yet"),
+                AutoSize = true,
+                Location = new Point(20, 180),
+                Font = new Font("Segoe UI", 12F)
+            };
 
-        // Calculate favorite platforms
-        var platformCounts = new Dictionary<string, int>();
+            // Calculate favorite platforms
+            var platformCounts = new Dictionary<string, int>();
             foreach (var content in watchedContent)
             {
                 if (platformCounts.ContainsKey(content.Platform))
@@ -586,54 +582,54 @@ namespace MovieSeriesManagement.Views
                     platformCounts[content.Platform] = 1;
             }
 
-var favoritePlatforms = platformCounts.OrderByDescending(kv => kv.Value).Take(3).ToList();
+            var favoritePlatforms = platformCounts.OrderByDescending(kv => kv.Value).Take(3).ToList();
 
-Label lblFavoritePlatforms = new Label
-{
-    Text = "Favorite Platforms: " + (favoritePlatforms.Count > 0
-        ? string.Join(", ", favoritePlatforms.Select(p => p.Key))
-        : "None yet"),
-    AutoSize = true,
-    Location = new Point(20, 210),
-    Font = new Font("Segoe UI", 12F)
-};
+            Label lblFavoritePlatforms = new Label
+            {
+                Text = "Favorite Platforms: " + (favoritePlatforms.Count > 0
+                    ? string.Join(", ", favoritePlatforms.Select(p => p.Key))
+                    : "None yet"),
+                AutoSize = true,
+                Location = new Point(20, 210),
+                Font = new Font("Segoe UI", 12F)
+            };
 
-// Add controls to tab
-tabStats.Controls.Add(lblWatchTime);
-tabStats.Controls.Add(lblWatchedCount);
-tabStats.Controls.Add(lblMoviesWatched);
-tabStats.Controls.Add(lblSeriesWatched);
-tabStats.Controls.Add(lblFavoriteGenres);
-tabStats.Controls.Add(lblFavoritePlatforms);
+            // Add controls to tab
+            tabStats.Controls.Add(lblWatchTime);
+            tabStats.Controls.Add(lblWatchedCount);
+            tabStats.Controls.Add(lblMoviesWatched);
+            tabStats.Controls.Add(lblSeriesWatched);
+            tabStats.Controls.Add(lblFavoriteGenres);
+            tabStats.Controls.Add(lblFavoritePlatforms);
         }
-        
-        private void UserDashboardForm_FormClosed(object sender, FormClosedEventArgs e)
-{
-    // Form is closing, no need to handle
-}
 
-private TabControl tabControl;
-private TabPage tabAllContent;
-private TabPage tabRecommendations;
-private TabPage tabWatchHistory;
-private TabPage tabStats;
-private Label lblWelcome;
-private Label lblSearch;
-private TextBox txtSearch;
-private Button btnSearch;
-private Label lblGenreFilter;
-private ComboBox cmbGenre;
-private Label lblPlatformFilter;
-private ComboBox cmbPlatform;
-private RadioButton rbAllContent;
-private RadioButton rbMoviesOnly;
-private RadioButton rbSeriesOnly;
-private DataGridView dgvContent;
-private Button btnViewDetails;
-private DataGridView dgvRecommendations;
-private DataGridView dgvWatchHistory;
-private Label lblStats;
-private Panel panel1;
-private Button btnLogout;
+        private void UserDashboardForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Form is closing, no need to handle
+        }
+
+        private TabControl tabControl;
+        private TabPage tabAllContent;
+        private TabPage tabRecommendations;
+        private TabPage tabWatchHistory;
+        private TabPage tabStats;
+        private Label lblWelcome;
+        private Label lblSearch;
+        private TextBox txtSearch;
+        private Button btnSearch;
+        private Label lblGenreFilter;
+        private ComboBox cmbGenre;
+        private Label lblPlatformFilter;
+        private ComboBox cmbPlatform;
+        private RadioButton rbAllContent;
+        private RadioButton rbMoviesOnly;
+        private RadioButton rbSeriesOnly;
+        private DataGridView dgvContent;
+        private Button btnViewDetails;
+        private DataGridView dgvRecommendations;
+        private DataGridView dgvWatchHistory;
+        private Label lblStats;
+        private Panel panel1;
+        private Button btnLogout;
     }
 }
