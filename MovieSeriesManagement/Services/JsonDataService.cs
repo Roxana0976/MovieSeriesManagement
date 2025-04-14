@@ -214,8 +214,8 @@ namespace MovieSeriesManagement.Services
                     Password = $"password{i - 1}", // In a real app, use proper password hashing
                     Email = $"user{i - 1}@example.com",
                     Role = UserRole.Regular,
-                    RegistrationDate = DateTime.Now.AddDays(-Random.Shared.Next(1, 365)),
-                    LastLoginDate = DateTime.Now.AddDays(-Random.Shared.Next(0, 30))
+                    RegistrationDate = DateTime.Now.AddDays(-new Random().Next(1, 365)),
+                    LastLoginDate = DateTime.Now.AddDays(-new Random().Next(0, 30))
                 });
             }
 
@@ -237,18 +237,18 @@ namespace MovieSeriesManagement.Services
                     Title = $"Movie {i}",
                     Description = $"This is a description for Movie {i}. It's a very interesting movie that everyone should watch.",
                     Type = ContentType.Movie,
-                    ReleaseYear = Random.Shared.Next(1980, 2024),
-                    Duration = Random.Shared.Next(80, 180),
-                    Platform = platforms[Random.Shared.Next(platforms.Length)],
-                    ViewCount = Random.Shared.Next(100, 10000),
-                    AverageRating = Math.Round(Random.Shared.NextDouble() * 5 + 3, 1) // Rating between 3 and 8 with one decimal
+                    ReleaseYear = new Random().Next(1980, 2024),
+                    Duration = new Random().Next(80, 180),
+                    Platform = platforms[new Random().Next(platforms.Length)],
+                    ViewCount = new Random().Next(100, 10000),
+                    AverageRating = Math.Round(new Random().NextDouble() * 5 + 3, 1) // Rating between 3 and 8 with one decimal
                 };
 
                 // Add 1-3 random genres
-                int genreCount = Random.Shared.Next(1, 4);
+                int genreCount = new Random().Next(1, 4);
                 for (int j = 0; j < genreCount; j++)
                 {
-                    string genre = genres[Random.Shared.Next(genres.Length)];
+                    string genre = genres[new Random().Next(genres.Length)];
                     if (!movie.Genres.Contains(genre))
                         movie.Genres.Add(genre);
                 }
@@ -274,23 +274,23 @@ namespace MovieSeriesManagement.Services
                     Title = $"Series {i - 50}",
                     Description = $"This is a description for Series {i - 50}. It's a very engaging series with multiple seasons.",
                     Type = ContentType.Series,
-                    ReleaseYear = Random.Shared.Next(1990, 2024),
-                    Platform = platforms[Random.Shared.Next(platforms.Length)],
-                    ViewCount = Random.Shared.Next(500, 20000),
-                    AverageRating = Math.Round(Random.Shared.NextDouble() * 5 + 3, 1) // Rating between 3 and 8 with one decimal
+                    ReleaseYear = new Random().Next(1990, 2024),
+                    Platform = platforms[new Random().Next(platforms.Length)],
+                    ViewCount = new Random().Next(500, 20000),
+                    AverageRating = Math.Round(new Random().NextDouble() * 5 + 3, 1) // Rating between 3 and 8 with one decimal
                 };
 
                 // Add 1-3 random genres
-                int genreCount = Random.Shared.Next(1, 4);
+                int genreCount = new Random().Next(1, 4);
                 for (int j = 0; j < genreCount; j++)
                 {
-                    string genre = genres[Random.Shared.Next(genres.Length)];
+                    string genre = genres[new Random().Next(genres.Length)];
                     if (!show.Genres.Contains(genre))
                         show.Genres.Add(genre);
                 }
 
                 // Add 1-5 seasons
-                int seasonCount = Random.Shared.Next(1, 6);
+                int seasonCount = new Random().Next(1, 6);
                 int totalDuration = 0;
 
                 for (int j = 1; j <= seasonCount; j++)
@@ -302,11 +302,11 @@ namespace MovieSeriesManagement.Services
                     };
 
                     // Add 8-15 episodes per season
-                    int episodeCount = Random.Shared.Next(8, 16);
+                    int episodeCount = new Random().Next(8, 16);
 
                     for (int k = 1; k <= episodeCount; k++)
                     {
-                        int duration = Random.Shared.Next(20, 61); // 20-60 minutes
+                        int duration = new Random().Next(20, 61); // 20-60 minutes
                         totalDuration += duration;
 
                         season.Episodes.Add(new Episode
